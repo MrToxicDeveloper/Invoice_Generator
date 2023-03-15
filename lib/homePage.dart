@@ -18,6 +18,7 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xff000000),
           title: Text("Product List"),
         ),
         body: Padding(
@@ -47,12 +48,32 @@ class _HomePageState extends State<HomePage> {
                                   children: [
                                     TextField(
                                       controller: txtProduct,
+                                      decoration: InputDecoration(
+                                        hintText: "Product Name",
+                                        border: OutlineInputBorder(),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
                                     ),
                                     TextField(
                                       controller: txtPrice,
-
+                                      keyboardType: TextInputType.number,
+                                      decoration: InputDecoration(
+                                        hintText: "Product Price",
+                                        border: OutlineInputBorder(),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
                                     ),
                                     ElevatedButton(
+                                        style: ButtonStyle(
+                                            fixedSize: MaterialStatePropertyAll(
+                                                Size(100, 50)),
+                                            backgroundColor:
+                                                MaterialStatePropertyAll(
+                                                    Colors.black)),
                                         onPressed: () {
                                           ModalData m1 = ModalData(
                                               Name: txtProduct.text,
@@ -74,19 +95,26 @@ class _HomePageState extends State<HomePage> {
                           style: TextStyle(fontSize: 20),
                         ),
                         style: ButtonStyle(
-                            fixedSize: MaterialStatePropertyAll(Size(100, 50))),
+                            fixedSize: MaterialStatePropertyAll(Size(100, 50)),
+                            backgroundColor:
+                                MaterialStatePropertyAll(Colors.black)),
                       ),
                       ElevatedButton(
+                        style: ButtonStyle(
+                            fixedSize: MaterialStatePropertyAll(Size(100, 50)),
+                            backgroundColor:
+                            MaterialStatePropertyAll(Colors.black)),
                         onPressed: () {
-
+                          for (int i = 0; i < All.length; i++) {
+                            int z = int.parse(All[i].Price!);
+                            sum = (sum + z) as int;
+                          }
                           Navigator.pushNamed(context, 'bill');
                         },
                         child: Text(
                           "Invoice",
                           style: TextStyle(fontSize: 20),
                         ),
-                        style: ButtonStyle(
-                            fixedSize: MaterialStatePropertyAll(Size(100, 50))),
                       ),
                     ],
                   ),
@@ -115,6 +143,8 @@ class _HomePageState extends State<HomePage> {
             PopupMenuItem(
               child: InkWell(
                 onTap: () {
+                  txtProduct.clear();
+                  txtPrice.clear();
                   showDialog(
                     context: context,
                     builder: (context) {
@@ -124,11 +154,30 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             TextField(
                               controller: txtProduct,
+                              decoration: InputDecoration(
+                                hintText: "Product Name",
+                                border: OutlineInputBorder(),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
                             ),
                             TextField(
                               controller: txtPrice,
+                              decoration: InputDecoration(
+                                hintText: "Product Price",
+                                border: OutlineInputBorder(),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
                             ),
                             ElevatedButton(
+                                style: ButtonStyle(
+                                    fixedSize:
+                                        MaterialStatePropertyAll(Size(100, 50)),
+                                    backgroundColor:
+                                        MaterialStatePropertyAll(Colors.black)),
                                 onPressed: () {
                                   setState(() {
                                     All[n].Name = txtProduct.text;

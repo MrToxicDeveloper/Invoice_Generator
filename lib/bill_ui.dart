@@ -31,11 +31,17 @@ class _BillUIState extends State<BillUI> {
             Divider(thickness: 2),
             Expanded(
               child: ListView.builder(
+                shrinkWrap: true,
                 itemCount: All.length,
                 itemBuilder: (context, int index) {
                   return Product(index);
                 },
               ),
+            ),
+            Divider(thickness: 2),
+            ListTile(
+              title: Text("Total Amount"),
+              trailing: Text("$sum"),
             ),
           ],
         ),
