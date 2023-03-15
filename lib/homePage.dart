@@ -50,6 +50,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                     TextField(
                                       controller: txtPrice,
+
                                     ),
                                     ElevatedButton(
                                         onPressed: () {
@@ -76,7 +77,10 @@ class _HomePageState extends State<HomePage> {
                             fixedSize: MaterialStatePropertyAll(Size(100, 50))),
                       ),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+
+                          Navigator.pushNamed(context, 'bill');
+                        },
                         child: Text(
                           "Invoice",
                           style: TextStyle(fontSize: 20),
@@ -111,7 +115,6 @@ class _HomePageState extends State<HomePage> {
             PopupMenuItem(
               child: InkWell(
                 onTap: () {
-
                   showDialog(
                     context: context,
                     builder: (context) {
@@ -127,7 +130,6 @@ class _HomePageState extends State<HomePage> {
                             ),
                             ElevatedButton(
                                 onPressed: () {
-
                                   setState(() {
                                     All[n].Name = txtProduct.text;
                                     All[n].Price = txtPrice.text;
@@ -150,7 +152,12 @@ class _HomePageState extends State<HomePage> {
                   All.removeAt(n);
                 });
               },
-              child: Text("Delete"),
+              child: Text(
+                "Delete",
+                style: TextStyle(
+                  color: Colors.red,
+                ),
+              ),
             ),
           ];
         },

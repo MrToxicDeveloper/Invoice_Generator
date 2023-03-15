@@ -1,4 +1,7 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
+import 'package:product_list/bill_ui.dart';
 import 'package:product_list/dataEnterScreen.dart';
 import 'homePage.dart';
 import 'modalData.dart';
@@ -12,7 +15,8 @@ void main() {
             debugShowCheckedModeBanner: false,
       routes: {
         '/': (context) => HomePage(),
-        'Enter':(context) => DataEnterScreen(),
+        // '/': (context) => HomePage(),
+        'bill':(context) => BillUI(),
       },
     ),
   );
